@@ -8,4 +8,12 @@ public class Node {
         val = x;
         next = null;
     }
+
+    // prints content of double linked list
+    static void printList(Node node) {
+        while (node != null) {
+            System.out.print(node.val + " ");
+            node = node.next;
+        }
+    }
 }

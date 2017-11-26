@@ -54,14 +54,6 @@ public class LinkedList {
         head = new_node;
     }
 
-    // prints content of double linked list
-    static void printList(Node node) {
-        while (node != null) {
-            System.out.print(node.val + " ");
-            node = node.next;
-        }
-    }
-
     private static void findNthFromLast(int n) {
         Node current = head;
         Node result = head;
@@ -117,7 +109,7 @@ public class LinkedList {
 
     private static void reverse() {
         System.out.println("Given Linked list");
-        printList(head);
+        Node.printList(head);
         System.out.println("");
 
         Node nextnode, prev = null, current = head;
@@ -129,7 +121,7 @@ public class LinkedList {
         }
         head = prev;
         System.out.println("Reversed linked list ");
-        printList(head);
+        Node.printList(head);
     }
 
 
@@ -213,7 +205,7 @@ public class LinkedList {
                 p.next = p.next.next;
             else p = p.next;
         }
-        printList(head1);*/
+        Node.printList(head1);*/
     }
 
 }
