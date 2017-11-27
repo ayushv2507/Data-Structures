@@ -9,14 +9,22 @@ public class BInaryTree {
     private static TreeNode root;
 
     public static void main(String[] args) {
-        root = new TreeNode(2);
+      /*  root = new TreeNode(2);
         root.leftChild = new TreeNode(7);
         root.rightChild = new TreeNode(5);
         root.leftChild.rightChild = new TreeNode(6);
         root.leftChild.rightChild.leftChild = new TreeNode(1);
         root.leftChild.rightChild.rightChild = new TreeNode(11);
         root.rightChild.rightChild = new TreeNode(9);
-        root.rightChild.rightChild.leftChild = new TreeNode(3);
+        root.rightChild.rightChild.leftChild = new TreeNode(3);*/
+        root = new TreeNode(1);
+        root.leftChild = new TreeNode(2);
+        root.rightChild = new TreeNode(3);
+        root.leftChild.leftChild = new TreeNode(4);
+        root.leftChild.rightChild = new TreeNode(5);
+        root.rightChild.leftChild = new TreeNode(6);
+        root.rightChild.rightChild = new TreeNode(7);
+
        /* int max = findMax(root);
         System.out.print(max);
         int size = size(root);
@@ -35,9 +43,12 @@ public class BInaryTree {
         int n = sc.nextInt();*/
        /* BFS(root,n);
           DFS(root,n); */
-        int level = maxSumLevel(root);
-        System.out.print(level);
-
+       /* int level = maxSumLevel(root);
+        System.out.print(level);*/
+       /* TreeNode lca = findLCA(root,4,5);
+        System.out.print(lca.key);*/
+        boolean isPath = findPathSum(root, 9);
+        System.out.print(isPath);
 
     }
 
@@ -226,5 +237,48 @@ public class BInaryTree {
             }
             return maxLevel;
         }
+    }
+
+    private static TreeNode findLCA(TreeNode root, int a, int b) {
+
+        TreeNode left = null, right = null;
+
+        if (root == null)
+            return null;
+        int rootValue = root.key;
+        if (rootValue == a || rootValue == b) {
+            return root;
+        }
+        // Look for keys in left and right subtrees
+        left = findLCA(root.leftChild, a, b);
+        right = findLCA(root.rightChild, a, b);
+
+        // If both of the above calls return Non-NULL, then one key
+        // is present in once subtree and other is present in other,
+        // So this node is the LCA
+        if (left != null && right != null) {
+            return root;
+        } else
+            // Otherwise check if left subtree or right subtree is LCA
+            return left == null ? right : left;
+    }
+
+    //checks if there is a path from the root down to a leaf with given sum
+
+    private static boolean findPathSum(TreeNode root, int sum) {
+        boolean found = false;
+
+        if (root == null)
+            return false;
+        int remainingSum = sum - root.key;
+
+        if (remainingSum == 0 && root.leftChild == null && root.rightChild == null) {
+            return true;
+        } else if (findPathSum(root.leftChild, remainingSum))
+            found = true;
+        if (!found)
+            return findPathSum(root.rightChild, remainingSum);
+
+        return found;
     }
 }
