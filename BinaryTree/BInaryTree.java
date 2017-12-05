@@ -281,4 +281,15 @@ public class BInaryTree {
 
         return found;
     }
+
+    //Function that outputs mirror of given binary tree
+    void mirrorTree(TreeNode root) {
+        if (root == null)
+            return;
+        mirrorTree(root.leftChild);
+        mirrorTree(root.rightChild);
+        TreeNode temp = root.leftChild;
+        root.leftChild = root.rightChild;
+        root.rightChild = temp;
+    }
 }

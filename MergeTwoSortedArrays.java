@@ -46,6 +46,8 @@ public class MergeTwoSortedArrays {
         }
     }
 
+    //Find two numbers such that swapping the two would make the sum of the arrays the same
+
     private static void find() {
         int a=0, b=0, target;
         int sum1 =0, sum2= 0;
