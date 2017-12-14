@@ -17,7 +17,10 @@ public class Pow {
          temp = POWER(a,(b/2));
         if(b%2 == 0) {
             return temp * temp;
+        } else {
+            if (b > 0)
+                return a * temp * temp;
+            else return (temp * temp) / a;
         }
-        else return a*temp*temp;
     }
 }

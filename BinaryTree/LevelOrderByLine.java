@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 //Prints Level order traversal per line
+//Complexity O(n log n)
 public class LevelOrderByLine {
 
     private static TreeNode root;
